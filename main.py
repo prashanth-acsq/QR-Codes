@@ -116,7 +116,7 @@ def main():
             num = len(os.listdir(OUTPUT_PATH)) - 1
             cv2.imwrite(os.path.join(OUTPUT_PATH, f"Code_{num + 1}.jpg"), np.array(image))
 
-    else:
+    elif mode == "scn:
         assert filename in os.listdir(INPUT_PATH), f"{filename} not found in input directory"
 
         image = cv2.cvtColor(src=cv2.imread(os.path.join(INPUT_PATH, filename), cv2.IMREAD_COLOR), code=cv2.COLOR_BGR2RGB)
@@ -135,6 +135,11 @@ def main():
             breaker()
             print("No data detected")
             breaker()
+    
+    else:
+        breaker()
+        print("----- Invalid Mode -----")
+        breaker()
 
 
 if __name__ == "__main__":
